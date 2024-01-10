@@ -2,13 +2,40 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Les petits plats | homepage</title>
+    <script src="https://kit.fontawesome.com/24d2ec4e90.js" crossorigin="anonymous"></script>
   </head>
-  <body>
-    <div id="app"></div>
-    <img src="/assets/medias/recettes/Recette02.jpg" class="w-96 h-96 object-cover">
+  <body class="bg-silver">
+    <main class="min-h-lvh">
+
+      <section id="search-section" class="bg-center bg-no-repeat bg-cover bg-hero-pattern">
+        <header class="px-28 pt-14">
+          <img src="/assets/logos/lpp-logo.svg" alt="logo du site internet les petits plats">
+        </header>
+        <div class="w-2/3 py-40 mx-auto text-center 2xl:w-1/2">
+          <h1 class="text-5xl leading-normal text-tanoi font-anton mb-7">Cherchez parmi plus de 1500 recettes du quotidien, simples et délicieuses</h1>
+          <form action="#" class="relative">
+            <input type="text" class="w-full py-6 text-base text-black rounded-lg px-9 focus:outline-white focus:outline-offset-2 focus:outline-1" placeholder="Recherchez une recette, un ingrédient">
+            <button class="absolute flex items-center justify-center text-2xl text-white transition-colors -translate-y-1/2 bg-black rounded-lg hover:text-black h-14 right-2 top-1/2 aspect-square">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section id="receipes-section" class="px-28 pb-14">
+        <form action="">
+          <input type="text">
+          <input type="text">
+          <input type="text">
+        </form>
+        <ul>
+          <li></li>
+        </ul>
+      </section>
+
+    </main>
     <script type="module" src="scripts/index.js"></script>
   </body>
 </html>
