@@ -55,7 +55,8 @@ export default {
         'hero-pattern': 'url(\'./assets/medias/hero-bg.jpg\')'
       },
       fontFamily: {
-        anton: ['anton', 'sans-serif']
+        anton: ['anton', 'sans-serif'],
+        manrope: ['Manrope', 'sans-serif']
       }
     }
   },

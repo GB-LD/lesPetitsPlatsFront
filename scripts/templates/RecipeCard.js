@@ -14,7 +14,7 @@ export default class RecipeCard {
   }
 
   createRecipeCard () {
-    const imgPath = `assets/medias/recettes/${this.imageName}`;
+    const imgPath = `medias/recettes/${this.imageName}`;
     const ingredientsList = this.ingredients.map(item =>
     /* html */`
     <li>
