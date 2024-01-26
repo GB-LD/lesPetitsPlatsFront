@@ -2,9 +2,10 @@ export default class DataList {
   static getIngredientsList (recipesList) {
     const ingredientsList = [];
     recipesList.forEach(recipe => {
-      recipe.ingredients.forEach(item => {
-        if (!ingredientsList.includes(item)) {
-          ingredientsList.push(item.ingredient);
+      recipe.ingredients.forEach(ingredient => {
+        const lowerCaseIngredient = ingredient.ingredient.toLowerCase();
+        if (!ingredientsList.includes(lowerCaseIngredient)) {
+          ingredientsList.push(lowerCaseIngredient);
         }
       });
     });
@@ -14,8 +15,9 @@ export default class DataList {
   static getApplianceList (recipesList) {
     const applianceList = [];
     recipesList.forEach(recipe => {
-      if (!applianceList.includes(recipe.appliance)) {
-        applianceList.push(recipe.appliance);
+      const lowerCaseAppliance = recipe.appliance.toLowerCase();
+      if (!applianceList.includes(lowerCaseAppliance)) {
+        applianceList.push(lowerCaseAppliance);
       }
     });
     return applianceList;
@@ -25,8 +27,9 @@ export default class DataList {
     const ustensilsList = [];
     recipesList.forEach(recipe => {
       recipe.ustensils.forEach(item => {
-        if (!ustensilsList.includes(item)) {
-          ustensilsList.push(item);
+        const lowerCaseUstensils = item.toLowerCase();
+        if (!ustensilsList.includes(lowerCaseUstensils)) {
+          ustensilsList.push(lowerCaseUstensils);
         }
       });
     });
