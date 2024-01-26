@@ -10,7 +10,7 @@ export default class RecipeCard {
     this.ingredients = recipe.ingredients;
     this.imageName = recipe.image;
     this.recipeCard = document.createElement('li');
-    this.recipeCard.classList.add('w-full', 'bg-white', 'rounded-lg');
+    this.recipeCard.classList.add('w-content', 'bg-white', 'rounded-lg', 'w-fit');
   }
 
   createRecipeCard () {
@@ -26,13 +26,17 @@ export default class RecipeCard {
     ).join('');
     const cardContent =
     /* html */`
-    <img src="${imgPath}" alt="Photographie de ${this.title}" class="object-cover w-full rounded-tl-lg rounded-tr-lg h-60">
-    <article class="px-6 pt-8 pb-16">
-    <h2 class="mb-8 text-lg font-normal font-anton tracking-wide">${this.title}</h2>
-    <h3 class="mb-8 font-bold uppercase font-manrope tracking-wide">Recette</h3>
-    <p class="mb-8 font-manrope line-clamp-4">${this.description}</p>
-    <h3 class="mb-8 font-bold uppercase font-manrope tracking-wide">Ingredients</h3>
-    <ul class="grid grid-cols-2 gap-5">${ingredientsList}</ul>
+    <img 
+    src="${imgPath}"
+    alt="Photographie de ${this.title}"
+    class="object-cover rounded-tl-lg rounded-tr-lg w-96 h-64"
+    loading="lazy">
+    <article class="px-6 pt-8 pb-16 w-96">
+      <h2 class="mb-8 text-lg font-normal font-anton tracking-wide">${this.title}</h2>
+      <h3 class="mb-8 font-bold uppercase font-manrope tracking-wide">Recette</h3>
+      <p class="mb-8 font-manrope line-clamp-4">${this.description}</p>
+      <h3 class="mb-8 font-bold uppercase font-manrope tracking-wide">Ingredients</h3>
+      <ul class="grid grid-cols-2 gap-5">${ingredientsList}</ul>
     </article>
     `;
 

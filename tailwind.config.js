@@ -52,7 +52,7 @@ export default {
         }
       },
       backgroundImage: {
-        'hero-pattern': 'url(\'./assets/medias/hero-bg.jpg\')'
+        'hero-pattern': 'url(\'./assets/medias/hero-bg.avif\')'
       },
       fontFamily: {
         anton: ['anton', 'sans-serif'],

@@ -65,7 +65,6 @@ export default class Filter {
     const list = this.listToFilter;
     const word = e.target.value;
     const matchArray = this.findMatches(word, list);
-    console.log(matchArray);
     this.generateListToFilter(matchArray);
   }
 }
