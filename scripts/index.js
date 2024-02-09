@@ -4,7 +4,7 @@ import API from './utils/API';
 import RecipeCard from './templates/RecipeCard';
 import DataList from './models/DataLists';
 import Filter from './templates/Filter';
-import TagFilter from './utils/TagFilter';
+import DataFilter from './models/DataFilter';
 
 // manage data
 const recipesData = await API.getData('data/recipes.json');
@@ -17,12 +17,12 @@ const filtersForm = document.querySelector('#filters-form');
 const recipeList = document.querySelector('#recipesList');
 
 // filters creation
-const tagFilter = new TagFilter();
-const ustensilsFilter = new Filter('Ustensiles', ustensilsList, filtersForm, tagFilter);
+const dataFilter = new DataFilter();
+const ustensilsFilter = new Filter('Ustensiles', ustensilsList, filtersForm, dataFilter);
 ustensilsFilter.createFilter();
-const applianceFilter = new Filter('Appareils', applianceList, filtersForm, tagFilter);
+const applianceFilter = new Filter('Appareils', applianceList, filtersForm, dataFilter);
 applianceFilter.createFilter();
-const ingredientFilter = new Filter('Ingrédients', ingredientsList, filtersForm, tagFilter);
+const ingredientFilter = new Filter('Ingrédients', ingredientsList, filtersForm, dataFilter);
 ingredientFilter.createFilter();
 
 // recipes card creation

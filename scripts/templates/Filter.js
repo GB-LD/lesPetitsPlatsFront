@@ -1,11 +1,11 @@
 export default class Filter {
-  constructor (filterName, listToFilter, formTarget, tagFilter) {
+  constructor (filterName, listToFilter, formTarget, dataFilter) {
     this.filterName = filterName;
     this.filterNameLower = filterName.toLowerCase();
     this.listToFilter = Array.from(listToFilter);
     this.formTarget = formTarget;
-    this.tagFilter = tagFilter;
     this.displayMatches = this.displayMatches.bind(this);
+    this.dataFilter = dataFilter;
   }
 
   createFilter () {
@@ -73,7 +73,7 @@ export default class Filter {
     suggestionList.innerHTML = html;
     const listItems = suggestionList.querySelectorAll('li');
     listItems.forEach(item => item.addEventListener('click', (e) => {
-      this.updateTagFilter(item.textContent);
+      this.updateDataFilter(item.textContent);
       this.toggleFilterDropdown(e);
     }));
   }
@@ -92,10 +92,21 @@ export default class Filter {
     this.generateListToFilter(matchArray);
   }
 
-  updateTagFilter (tag) {
-    if (!this.tagFilter.tagList.includes(tag)) {
-      const tagFilterUpdated = [...this.tagFilter.tagList, tag];
-      this.tagFilter.updateTagList(tagFilterUpdated);
+  updateDataFilter (tag) {
+    switch (this.filterName) {
+      case 'Ustensiles':
+        this.dataFilter.ustensils = tag;
+        break;
+      case 'Appareils':
+        this.dataFilter.appliances = tag;
+        break;
+      case 'Ingrédients':
+        this.dataFilter.ingredients = tag;
+        break;
+      default:
+        console.log('error');
     }
+
+    this.dataFilter.displayTagFilter();
   }
 }
