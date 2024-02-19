@@ -96,17 +96,24 @@ export default class Filter {
     switch (this.filterName) {
       case 'Ustensiles':
         this.dataFilter.ustensils = tag;
+        this.dataFilter.getParseAndFilteredListBy('Ustensiles');
         break;
       case 'Appareils':
         this.dataFilter.appliances = tag;
+        this.dataFilter.getParseAndFilteredListBy('Appareils');
         break;
       case 'Ingrédients':
         this.dataFilter.ingredients = tag;
+        this.dataFilter.getParseAndFilteredListBy('Ingrédients');
         break;
       default:
         console.log('error');
     }
 
     this.dataFilter.displayTagFilter();
+  }
+
+  updateGenerateListToFilter (list) {
+    this.generateListToFilter(list);
   }
 }
