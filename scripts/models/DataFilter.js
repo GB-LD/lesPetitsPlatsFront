@@ -80,21 +80,18 @@ export default class DataFilter {
   }
 
   removeTag (tag) {
-    // if (this._ingredients.includes(tag)) {
-    //   this._ingredients = this._ingredients.filter(item => item !== tag);
-    // } else if (this._appliances.includes(tag)) {
-    //   this._appliances = this._appliances.filter(item => item !== tag);
-    // } else if (this._ustensils.includes(tag)) {
-    //   this._ustensils = this._ustensils.filter(item => item !== tag);
-    // };
-    this._ingredients = [];
-    this._appliances = [];
-    this._ustensils = [];
-    this._tagList = [];
+    if (this._ingredients.includes(tag)) {
+      this._ingredients = this._ingredients.filter(item => item !== tag);
+    } else if (this._appliances.includes(tag)) {
+      this._appliances = this._appliances.filter(item => item !== tag);
+    } else if (this._ustensils.includes(tag)) {
+      this._ustensils = this._ustensils.filter(item => item !== tag);
+    };
+
     this.displayTagFilter();
-    this._recipeListFiltered = [];
-    this.updateFiltersInput(this.recipesList);
-    RecipesSection.generateRecipesList(this.recipesList);
+    this.updateFilteredList();
+    this.updateFiltersInput(this._recipeListFiltered);
+    RecipesSection.generateRecipesList(this._recipeListFiltered);
   }
 
   filterRecipesByIngredients (list = this.recipesList) {
@@ -148,17 +145,14 @@ export default class DataFilter {
         case 'Ustensiles':
           this._recipeListFiltered = this.filterRecipesByUstencils(this._recipeListFiltered);
           this.updateFiltersInput(this._recipeListFiltered);
-          console.log(this._recipeListFiltered);
           break;
         case 'Appareils':
           this._recipeListFiltered = this.filterRecipesByAppliance(this._recipeListFiltered);
           this.updateFiltersInput(this._recipeListFiltered);
-          console.log(this._recipeListFiltered);
           break;
         case 'Ingrédients':
           this._recipeListFiltered = this.filterRecipesByIngredients(this._recipeListFiltered);
           this.updateFiltersInput(this._recipeListFiltered);
-          console.log(this._recipeListFiltered);
           break;
         default:
           console.log('error');
@@ -188,5 +182,21 @@ export default class DataFilter {
     this.ustensilsFilter.updateGenerateListToFilter(ustensilsList);
     this.applianceFilter.updateGenerateListToFilter(applianceList);
     this.ingredientFilter.updateGenerateListToFilter(ingredientsList);
+  }
+
+  updateFilteredList () {
+    const resultFiltered = this.recipesList.filter(recipe => {
+      const ingredientCheck = this._ingredients.every(ingredient => {
+        return recipe.ingredients.some(item => item.ingredient.toLowerCase() === ingredient);
+      });
+      const applianceCheck = this._appliances.every(appliance => {
+        return recipe.appliance.toLowerCase() === appliance;
+      });
+      const ustencilCheck = this._ustensils.every(ustencil => {
+        return recipe.ustensils.some(item => item === ustencil);
+      });
+      return ingredientCheck && applianceCheck && ustencilCheck;
+    });
+    this._recipeListFiltered = resultFiltered;
   }
 }
