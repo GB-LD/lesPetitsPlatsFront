@@ -5,6 +5,7 @@ import DataList from './models/DataLists';
 import Filter from './templates/Filter';
 import DataFilter from './models/DataFilter';
 import RecipesSection from './templates/RecipesSection';
+import DataSearchBarFilter from './models/DataSearchBarFilter';
 
 // manage data
 const recipesData = await API.getData('data/recipes.json');
@@ -17,6 +18,7 @@ const filtersForm = document.querySelector('#filters-form');
 
 // filters creation
 const dataFilter = new DataFilter(recipesData);
+const searchBarFilter = new DataSearchBarFilter(recipesData, dataFilter);
 const ustensilsFilter = new Filter('Ustensiles', ustensilsList, filtersForm, dataFilter);
 ustensilsFilter.createFilter();
 const applianceFilter = new Filter('Appareils', applianceList, filtersForm, dataFilter);
@@ -25,5 +27,6 @@ const ingredientFilter = new Filter('Ingrédients', ingredientsList, filtersForm
 ingredientFilter.createFilter();
 
 dataFilter.setFilters(ustensilsFilter, applianceFilter, ingredientFilter);
+dataFilter.setSearchBar(searchBarFilter);
 
 RecipesSection.generateRecipesList(recipesData);

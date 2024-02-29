@@ -12,12 +12,17 @@ export default class DataFilter {
     this.ustensilsFilter = null;
     this.applianceFilter = null;
     this.ingredientFilter = null;
+    this.searchBar = null;
   }
 
   setFilters (ustensilsFilter, applianceFilter, ingredientFilter) {
     this.ustensilsFilter = ustensilsFilter;
     this.applianceFilter = applianceFilter;
     this.ingredientFilter = ingredientFilter;
+  }
+
+  setSearchBar (searchBar) {
+    this.searchBar = searchBar;
   }
 
   get ingredients () {
@@ -48,6 +53,10 @@ export default class DataFilter {
     if (!this._ustensils.includes(value)) {
       this._ustensils.push(value);
     }
+  }
+
+  get tagList () {
+    return this._tagList;
   }
 
   displayTagFilter () {
@@ -94,6 +103,13 @@ export default class DataFilter {
     RecipesSection.generateRecipesList(this._recipeListFiltered);
   }
 
+  removeAllTag () {
+    this._ingredients = [];
+    this._appliances = [];
+    this._ustensils = [];
+    this.displayTagFilter();
+  }
+
   filterRecipesByIngredients (list = this.recipesList) {
     const ingredientsFilter = this._ingredients;
     const result = list.filter(function (recipe) {
@@ -123,6 +139,7 @@ export default class DataFilter {
   }
 
   getParseAndFilteredListBy (typeFilter) {
+    this.searchBar.cleanSearchFromTag();
     if (this._recipeListFiltered.length === 0) {
       switch (typeFilter) {
         case 'Ustensiles':

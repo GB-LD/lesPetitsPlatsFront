@@ -7,8 +7,7 @@
     <script src="https://kit.fontawesome.com/24d2ec4e90.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <main class="min-h-lvh">
-
+    <main class="min-h-screen">
       <section id="search-section" class="bg-center bg-no-repeat bg-cover bg-hero-pattern">
         <header class="px-28 pt-14">
           <img src="/assets/logos/lpp-logo.svg" alt="logo du site internet les petits plats">
@@ -16,9 +15,12 @@
         <div class="w-2/3 py-40 mx-auto text-center 2xl:w-1/2">
           <h1 class="text-5xl leading-normal text-tanoi font-anton mb-7">Cherchez parmi plus de 1500 recettes du quotidien, simples et délicieuses</h1>
           <form action="#" class="relative">
-            <input type="text" class="w-full py-6 text-base text-black rounded-lg px-9 focus:outline-white focus:outline-offset-2 focus:outline-1" placeholder="Recherchez une recette, un ingrédient">
-            <button class="absolute flex items-center justify-center text-2xl text-white transition-colors -translate-y-1/2 bg-black rounded-lg hover:text-black h-14 right-2 top-1/2 aspect-square">
-              <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="search-bar-input" type="text" class="w-full py-6 text-base text-black rounded-lg px-9 focus:outline-white focus:outline-offset-2 focus:outline-1" placeholder="Recherchez une recette, un ingrédient">
+            <button id="clean-search-bar-btn" class="absolute flex items-center justify-center hidden -translate-y-1/2 h-14 right-8 top-1/2 aspect-square">
+              <svg id="cleanSearch-${this.filterNameLower}" class="absolute -translate-y-1/2 right-10 top-1/2 stroke-slate-900" xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <button type="button" id="search-bar-input-btn" class="absolute flex items-center justify-center text-2xl text-white transition-colors -translate-y-1/2 bg-black rounded-lg hover:text-black h-14 right-2 top-1/2 aspect-square">
+              <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
             </button>
           </form>
         </div>
@@ -26,6 +28,7 @@
 
       <section id="receipes-section" class="px-28 pb-14 bg-silver">
         <div id="filters-form" class="flex pt-6"></div>
+        <p id="recipesNotFound" class="hidden text-4xl leading-normal text-center font-anton mt-14">Désolé, nous n'avons pas trouvé de recette qui corresponde à votre recherche</p>
         <ul class="grid grid-flow-col mb-14 auto-cols-max" id="tag-list"></ul>
         <ul id="recipesList" class="grid grid-cols-3 gap-10"></ul>
       </section>
