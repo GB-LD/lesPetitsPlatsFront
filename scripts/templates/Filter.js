@@ -12,12 +12,12 @@ export default class Filter {
     const filterHTML =
     /* html */
     `
-      <div id="${this.filterNameLower}-filter" class="rounded-xl font-manrope mr-16 relative">
+      <div id="${this.filterNameLower}-filter" class="w-full mb-4 lg:mb-0 rounded-xl font-manrope mr-16 relative">
         <label for="search-${this.filterNameLower}" class="flex justify-between bg-white p-3.5 w-full rounded-t-lg rounded-b-lg cursor-pointer">
           <span class="mr-24">${this.filterName}</span>
           <svg class="transition-all ease-in-out duration-200" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
         </label>
-        <div id="${this.filterNameLower}-list" class="pointer-events-none transition-opacity ease-in-out duration-200 opacity-0 bg-white absolute w-full rounded-b-lg cursor-pointer">
+        <div id="${this.filterNameLower}-list" class="pointer-events-none transition-opacity ease-in-out duration-200 opacity-0 bg-white absolute w-full rounded-b-lg cursor-pointer z-10">
           <div class="px-3.5 relative">
             <input type="text" class="p-2 block border-2 border-silver px-3.5 w-full rounded mb-3" id="search-${this.filterNameLower}">
             <svg class="absolute right-5 top-1/2 -translate-y-1/2 stroke-silver" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>

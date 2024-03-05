@@ -12,7 +12,7 @@
         <header class="px-28 pt-14">
           <img src="/assets/logos/lpp-logo.svg" alt="logo du site internet les petits plats">
         </header>
-        <div class="w-2/3 py-40 mx-auto text-center 2xl:w-1/2">
+        <div class="p-8 mx-auto text-center lg:w-2/3 lg:py-40 2xl:w-1/2">
           <h1 class="text-5xl leading-normal text-tanoi font-anton mb-7">Cherchez parmi plus de 1500 recettes du quotidien, simples et délicieuses</h1>
           <form action="#" class="relative">
             <input id="search-bar-input" type="text" class="w-full py-6 text-base text-black rounded-lg px-9 focus:outline-white focus:outline-offset-2 focus:outline-1" placeholder="Recherchez une recette, un ingrédient">
@@ -26,11 +26,14 @@
         </div>
       </section>
 
-      <section id="receipes-section" class="px-28 pb-14 bg-silver">
-        <div id="filters-form" class="flex pt-6"></div>
+      <section id="receipes-section" class="px-8 lg:px-28 lg:pb-14 bg-silver">
+        <div class="flex flex-col items-center justify-between lg:flex-row">
+          <div id="filters-form" class="flex flex-col pt-6 lg:flex-row"></div>
+          <span id="recipes-number" class="pt-6 font-anton"></span>
+        </div>
         <p id="recipesNotFound" class="hidden text-4xl leading-normal text-center font-anton mt-14">Désolé, nous n'avons pas trouvé de recette qui corresponde à votre recherche</p>
         <ul class="grid grid-flow-col mb-14 auto-cols-max" id="tag-list"></ul>
-        <ul id="recipesList" class="grid grid-cols-3 gap-10"></ul>
+        <ul id="recipesList" class="grid justify-center gap-10 lg:grid-cols-3 justify-items-center"></ul>
       </section>
 
     </main>
